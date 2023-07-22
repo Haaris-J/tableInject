@@ -10,8 +10,47 @@
 	<button id="b3" onclick="addRow()">Add Row</button>
 		
 	<script language="javascript">
-		
-		//Your code goes here
+		var row;
+        var col;
+		function generateTable() {
+        // Getting value for number of rows
+		row = Number(document.getElementById("t1").value);
+        // Getting value for number of Columns
+		col = Number(document.getElementById("t2").value);
+        // Creating table element
+		const tbl = document.createElement("table");
+        // Adding ID to table element
+		tbl.setAttribute("id","tbl");
+        // Creating table body element
+		const tblBody = document.createElement("tbody");
+		for (let i = 0; i < row; i++) {
+            // Creating row element
+			const row = document.createElement("tr");
+			for (let j = 0; j < col; j++) {
+                // Creating t-data element
+				const cell = document.createElement("td");
+				const cellText = document.createTextNode(`row ${i}, column ${j}`);
+				cell.appendChild(cellText);
+				row.appendChild(cell);
+			}
+			tblBody.appendChild(row);
+		}
+		tbl.appendChild(tblBody);
+		document.body.appendChild(tbl);
+		tbl.setAttribute("border", "1");
+	}
+
+    function addRow() {
+        var tbl = document.getElementById("tbl");
+        var row1 = tbl.insertRow(row);
+        for (let i=0; i < col; i++){
+            var cell = row1.insertCell(i);
+            cell.innerHTML = `row ${row}, column ${i}`;
+        }
+        row=row+1;
+    }
+
+    
 	
 	</script>
 	
